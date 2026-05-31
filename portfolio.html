@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="데이터 기반 마케터 박지훈의 포트폴리오. SQL, Python, GA4, 퍼포먼스 마케팅 역량과 ROAS 3.2배 개선 등의 성과를 숫자로 증명합니다.">
+    <title>박지훈 | 데이터 기반 마케터 포트폴리오</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            /* Colors */
+            --bg-main: #0b0f19;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --bg-card-hover: rgba(31, 41, 55, 0.8);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(99, 102, 241, 0.4);
+            
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            
+            --accent-primary: #6366f1; /* Indigo */
+            --accent-primary-glow: rgba(99, 102, 241, 0.15);
+            --accent-success: #10b981; /* Emerald */
+            --accent-success-glow: rgba(16, 185, 129, 0.15);
+            --accent-teal: #14b8a6; /* GA4 Teal */
+            --accent-purple: #a855f7; /* Python/SQL Purple */
+            
+            /* Fonts */
+            --font-heading: 'Outfit', 'Noto Sans KR', sans-serif;
+            --font-body: 'Inter', 'Noto Sans KR', sans-serif;
+            
+            /* Shadows & Blur */
+            --glass-blur: blur(16px);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-glow-success: 0 0 20px rgba(16, 185, 129, 0.2);
+            --shadow-glow-primary: 0 0 20px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Base & Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(99, 102, 241, 0.5);
+        }
+
+        /* Layout Grid Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        /* Glowing Blobs */
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: -1;
+            animation: float-blob 25s infinite alternate ease-in-out;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background-color: var(--accent-primary);
+            top: -10%;
+            right: -10%;
+        }
+
+        .blob-2 {
+            width: 450px;
+            height: 450px;
+            background-color: var(--accent-success);
+            bottom: -10%;
+            left: -10%;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            width: 350px;
+            height: 350px;
+            background-color: var(--accent-purple);
+            top: 40%;
+            left: 30%;
+            animation-duration: 35s;
+            animation-delay: -10s;
+        }
+
+        @keyframes float-blob {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, -60px) scale(1.1); }
+            100% { transform: translate(-30px, 40px) scale(0.95); }
+        }
+
+        /* Typography Helper Classes */
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 70%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .accent-gradient-text {
+            background: linear-gradient(135deg, #818cf8 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            background: rgba(11, 15, 25, 0.7);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            background: rgba(9, 13, 22, 0.85);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            padding: 3px 8px;
+            background: var(--accent-primary-glow);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: #818cf8;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav ul a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        nav ul a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-success);
+            transition: width 0.2s ease;
+        }
+
+        nav ul a:hover {
+            color: var(--text-primary);
+        }
+
+        nav ul a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px 0;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 99px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: var(--accent-success);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            animation: pulse-border 2s infinite alternate;
+        }
+
+        @keyframes pulse-border {
+            0% { border-color: rgba(16, 185, 129, 0.2); box-shadow: 0 0 0 rgba(16, 185, 129, 0); }
+            100% { border-color: rgba(16, 185, 129, 0.5); box-shadow: 0 0 10px rgba(16, 185, 129, 0.15); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-primary);
+            color: white;
+            border: 1px solid var(--accent-primary);
+            box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(99, 102, 241, 0.5);
+            background-color: #4f46e5;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            backdrop-filter: var(--glass-blur);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Dashboard Widget Mockup */
+        .hero-widget {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            animation: float-widget 6s infinite ease-in-out;
+        }
+
+        @keyframes float-widget {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .widget-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .widget-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--text-muted);
+        }
+
+        .widget-dot:nth-child(1) { background-color: #ef4444; }
+        .widget-dot:nth-child(2) { background-color: #f59e0b; }
+        .widget-dot:nth-child(3) { background-color: #10b981; }
+
+        .widget-tag {
+            font-size: 0.75rem;
+            color: var(--accent-success);
+            font-weight: 600;
+            background: var(--accent-success-glow);
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .widget-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        .widget-metric {
+            font-size: 2.2rem;
+            font-weight: 800;
+            font-family: var(--font-heading);
+            color: var(--text-primary);
+        }
+
+        .widget-chart-placeholder {
+            height: 150px;
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .widget-bar {
+            flex: 1;
+            background: linear-gradient(180deg, var(--accent-primary) 0%, rgba(99, 102, 241, 0.1) 100%);
+            border-radius: 4px 4px 0 0;
+            height: 20%;
+            transition: height 1s ease;
+        }
+
+        /* Section Global Styles */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-header {
+            max-width: 600px;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-success);
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        /* Metrics Section */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 36px 28px;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-success));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .metric-card:hover::before {
+            opacity: 1;
+        }
+
+        .metric-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 8px;
+        }
+
+        .metric-card:hover .metric-icon {
+            background: var(--accent-primary-glow);
+            color: #818cf8;
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .metric-number-wrapper {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .metric-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1;
+            font-family: var(--font-heading);
+        }
+
+        .metric-unit {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-success);
+        }
+
+        .metric-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .metric-details {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Performance Chart Section */
+        .chart-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .chart-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .chart-header {
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chart-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 4px;
+            border-radius: 8px;
+            gap: 4px;
+        }
+
+        .chart-tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 6px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .chart-tab-btn.active {
+            background: var(--accent-primary);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 320px;
+            width: 100%;
+        }
+
+        .chart-explain {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .explain-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .explain-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .explain-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .badge-roas { background: rgba(99, 102, 241, 0.15); color: #818cf8; }
+        .badge-crm { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+        .badge-ab { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+
+        .explain-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .explain-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px 28px;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .skill-icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .skill-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .skill-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .skill-bullets li {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-bullets li::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: var(--accent-success);
+            flex-shrink: 0;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 7px;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-primary) 0%, var(--accent-success) 50%, var(--border-color) 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -32px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--bg-main);
+            border: 3px solid var(--accent-primary);
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            background-color: var(--accent-success);
+            border-color: var(--accent-success);
+            box-shadow: var(--shadow-glow-success);
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--border-hover);
+            transform: translateX(4px);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .timeline-title-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .timeline-year {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-success);
+            background: var(--accent-success-glow);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .timeline-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .timeline-role {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .timeline-body {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .timeline-body ul {
+            margin-top: 12px;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .timeline-body li {
+            list-style: square;
+        }
+
+        .timeline-body strong {
+            color: var(--text-primary);
+        }
+
+        /* Contact Section */
+        .contact-card {
+            background: linear-gradient(135deg, rgba(17, 24, 39, 0.8) 0%, rgba(9, 13, 25, 0.9) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .contact-card h2 {
+            font-size: 2.25rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-card p {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-size: 1.05rem;
+        }
+
+        .email-display {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 12px 24px;
+            border-radius: 99px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            max-width: 100%;
+            word-break: break-all;
+            transition: all 0.2s ease;
+        }
+
+        .email-display:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .email-icon {
+            color: var(--accent-primary);
+        }
+
+        .copy-btn {
+            background: var(--accent-primary);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .copy-btn:hover {
+            background: #4f46e5;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+
+        .copy-btn.copied {
+            background: var(--accent-success);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            background: rgba(11, 15, 25, 0.8);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 968px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-ctas {
+                justify-content: center;
+            }
+
+            .chart-layout {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(11, 15, 25, 0.95);
+                backdrop-filter: var(--glass-blur);
+                -webkit-backdrop-filter: var(--glass-blur);
+                border-bottom: 1px solid var(--border-color);
+                padding: 24px;
+                display: none;
+                z-index: 49;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .hero {
+                padding: 140px 0 80px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .metric-number {
+                font-size: 2.5rem;
+            }
+
+            .contact-card {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Layer -->
+    <div class="grid-bg"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Navigation Header -->
+    <header id="header">
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                Park Jihoon <span>마케터</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+            <nav id="navMenu">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#performance">Performance</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-tag">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    직관을 증명하고 숫자로 답하다
+                </div>
+                <h1>데이터로 성장의<br><span class="accent-gradient-text">돌파구를 여는</span> 마케터</h1>
+                <p>안녕하세요. 5년 차 데이터 기반 퍼포먼스 마케터 박지훈입니다. SQL 추출과 Python 통계 분석, GA4 이벤트 모델링을 기반으로 유저 행동 데이터를 분석하고 퍼널을 최적화하여 마케팅 성과(ROAS)를 극대화합니다.</p>
+                <div class="hero-ctas">
+                    <a href="#performance" class="btn btn-primary">성과 지표 보기</a>
+                    <a href="#contact" class="btn btn-secondary">연락하기</a>
+                </div>
+            </div>
+            
+            <!-- Dashboard Widget Mockup -->
+            <div class="hero-widget">
+                <div class="widget-header">
+                    <div class="widget-dots">
+                        <span class="widget-dot"></span>
+                        <span class="widget-dot"></span>
+                        <span class="widget-dot"></span>
+                    </div>
+                    <span class="widget-tag">LIVE</span>
+                </div>
+                <div>
+                    <span class="widget-title">E-COMMERCE CAMPAIGN ROAS</span>
+                    <div class="widget-metric">320%</div>
+                </div>
+                <div class="widget-chart-placeholder">
+                    <div class="widget-bar" style="height: 25%"></div>
+                    <div class="widget-bar" style="height: 38%"></div>
+                    <div class="widget-bar" style="height: 30%"></div>
+                    <div class="widget-bar" style="height: 48%"></div>
+                    <div class="widget-bar" style="height: 70%"></div>
+                    <div class="widget-bar" style="height: 100%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Section -->
+    <section id="performance">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Key Performance Indicators</span>
+                <h2 class="section-title">주요 마케팅 성과</h2>
+                <p class="section-desc">가설 검증과 데이터 기반 액션을 통해 비즈니스 임팩트를 이끌어낸 핵심 결과들입니다.</p>
+            </div>
+            
+            <div class="metrics-grid">
+                <!-- ROAS -->
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    </div>
+                    <div class="metric-number-wrapper">
+                        <span class="metric-number" data-target="3.2">0</span>
+                        <span class="metric-unit">배 개선</span>
+                    </div>
+                    <h3 class="metric-title">신규 캠페인 ROAS 성장</h3>
+                    <p class="metric-details">2024년 이커머스 신규 유입 및 구매 캠페인의 타겟 세그멘테이션 최적화를 통해 ROAS 3.2배 개선 달성.</p>
+                </div>
+
+                <!-- CRM Conversion -->
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <div class="metric-number-wrapper">
+                        <span class="metric-number" data-target="18">0</span>
+                        <span class="metric-unit">% 상승</span>
+                    </div>
+                    <h3 class="metric-title">CRM 캠페인 전환율 향상</h3>
+                    <p class="metric-details">2023년 유저 행동 빅데이터에 기반한 RFM 모델링 및 맞춤 혜택 제공으로 개인화 푸시 클릭/구매 전환율 18% 증대.</p>
+                </div>
+
+                <!-- A/B Testing -->
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                    <div class="metric-number-wrapper">
+                        <span class="metric-number" data-target="12">0</span>
+                        <span class="metric-unit">% 리프트</span>
+                    </div>
+                    <h3 class="metric-title">A/B 테스트 평균 리프트</h3>
+                    <p class="metric-details">30회 이상의 랜딩 페이지 및 UI/UX 시안 A/B 테스트를 전개하여 통계적 유의성이 검증된 평균 12%의 전환율 리프트 확보.</p>
+                </div>
+            </div>
+
+            <!-- Interactive Chart Area -->
+            <div class="chart-layout" style="margin-top: 60px;">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="explain-title" style="margin-bottom: 0;">성과 데이터 대시보드</h3>
+                        <div class="chart-tabs">
+                            <button class="chart-tab-btn active" onclick="switchChart(this, 'roas')">ROAS 개선</button>
+                            <button class="chart-tab-btn" onclick="switchChart(this, 'crm')">CRM 전환율</button>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-explain">
+                    <div class="explain-card">
+                        <span class="explain-badge badge-roas">CAMPAIGN FOCUS</span>
+                        <h4 class="explain-title">이커머스 신규 유입 최적화 (2024)</h4>
+                        <p class="explain-text">기존 매체 운영 방식에서 탈피하여 SQL 분석을 활용한 코호트별 가치 분석을 통해 고가치 유저 페르소나를 정의하고 타겟팅을 재설정했습니다. 불필요한 노출 지면 차단 및 소재 소재별 매칭 설계로 광고 효율을 극대화했습니다.</p>
+                    </div>
+
+                    <div class="explain-card">
+                        <span class="explain-badge badge-crm">CRM DYNAMICS</span>
+                        <h4 class="explain-title">데이터 기반 유저 세그멘테이션 (2023)</h4>
+                        <p class="explain-text">전체 발송식 푸시 마케팅 대신 Python을 활용하여 이탈 위험군, 구매 가능군, 충성 고객군으로 CRM 타겟을 쪼개고, 맞춤형 혜택과 라이프사이클 기반 시나리오를 설계하여 리텐션 비용을 줄이고 성과를 높였습니다.</p>
+                    </div>
+
+                    <div class="explain-card">
+                        <span class="explain-badge badge-ab">A/B EXPERIMENTATION</span>
+                        <h4 class="explain-title">체계적인 A/B 테스트 프레임워크 수립</h4>
+                        <p class="explain-text">가설 설정 단계부터 독립변수 통제 및 최소 필요 샘플 수(MDE) 계산을 거쳐 신뢰할 수 있는 A/B 테스트를 총 30회 이상 설계하고 운영했습니다. 이를 통해 비효율을 걷어내고 제품 전환 퍼널의 기여 포인트를 발굴했습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" style="background: rgba(255, 255, 255, 0.01); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Tech Stack & Domain Knowledge</span>
+                <h2 class="section-title">핵심 기술 및 전문성</h2>
+                <p class="section-desc">데이터를 다루는 코딩 기술부터 비즈니스 전략을 수립하는 퍼포먼스 전문 지식까지 보유하고 있습니다.</p>
+            </div>
+
+            <div class="skills-container">
+                <!-- SQL -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <div class="skill-icon-box" style="color: var(--accent-primary);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path></svg>
+                        </div>
+                        <h3 class="skill-name">SQL</h3>
+                    </div>
+                    <ul class="skill-bullets">
+                        <li>대용량 유저 로그 분석 및 코호트 추출</li>
+                        <li>세그멘테이션 데이터 정제 및 마케팅 툴 연동</li>
+                        <li>지표 트래킹을 위한 핵심 대시보드 쿼리 최적화</li>
+                    </ul>
+                </div>
+
+                <!-- Python -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <div class="skill-icon-box" style="color: var(--accent-purple);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18a4 4 0 0 0-8 0"></path><rect x="3" y="4" width="18" height="10" rx="2"></rect><line x1="12" y1="14" x2="12" y2="18"></line></svg>
+                        </div>
+                        <h3 class="skill-name">Python</h3>
+                    </div>
+                    <ul class="skill-bullets">
+                        <li>A/B 테스트 사후 검증 및 통계 검정 (t-test)</li>
+                        <li>Pandas / NumPy 기반 마케팅 데이터 정밀 전처리</li>
+                        <li>CRM 최적화를 위한 머신러닝 기반 RFM 클러스터링</li>
+                    </ul>
+                </div>
+
+                <!-- GA4 -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <div class="skill-icon-box" style="color: var(--accent-teal);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+                        </div>
+                        <h3 class="skill-name">GA4 (Google Analytics 4)</h3>
+                    </div>
+                    <ul class="skill-bullets">
+                        <li>GTM 활용 비즈니스 맞춤형 이벤트 모델링</li>
+                        <li>유저 구매 퍼널 이탈 지점 추적 및 리포팅</li>
+                        <li>다차원 세그먼트 분석 및 맞춤 잠재고객 생성</li>
+                    </ul>
+                </div>
+
+                <!-- Performance Marketing -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <div class="skill-icon-box" style="color: var(--accent-success);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16V12"></path><path d="M12 8h.01"></path></svg>
+                        </div>
+                        <h3 class="skill-name">퍼포먼스 마케팅</h3>
+                    </div>
+                    <ul class="skill-bullets">
+                        <li>SA / DA 광고 캠페인 매체 최적화 바잉 및 예산 설계</li>
+                        <li>ROAS 증대를 위한 전환 기여 모델(Attribution) 분석</li>
+                        <li>CAC / LTV 지표 트래킹 및 타겟 크리에이티브 기획</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-left: auto; margin-right: auto;">
+                <span class="section-tag">Career Milestones</span>
+                <h2 class="section-title">5년의 실무 경험과 성장 기록</h2>
+                <p class="section-desc">다양한 마케팅 환경에서 문제를 정의하고 데이터로 솔루션을 제시해 왔습니다.</p>
+            </div>
+
+            <div class="timeline">
+                <!-- 2024 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-title-group">
+                                <span class="timeline-year">2024</span>
+                                <h3 class="timeline-title">이커머스 브랜드 그로스 및 신규 캠페인 최적화</h3>
+                            </div>
+                            <span class="timeline-role">퍼포먼스 마케터 / 프로젝트 리드</span>
+                        </div>
+                        <div class="timeline-body">
+                            <p>유료 광고 매체 고도화를 목표로 매체별 퍼널을 전수 정비하고 유저 타겟을 SQL로 추출하여 정밀 매칭했습니다.</p>
+                            <ul>
+                                <li><strong>ROAS 3.2배 개선:</strong> 머신러닝 타겟 모수 정교화 및 핵심 랜딩 최적화를 통한 성과 리프트.</li>
+                                <li><strong>효율 중심 예산 배정:</strong> 데이터 기반 유입 전환 기여 비중 분석을 통해 마케팅 예산 효율 25% 개선.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2023 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-title-group">
+                                <span class="timeline-year">2023</span>
+                                <h3 class="timeline-title">CRM 데이터 마케팅 시스템 구축</h3>
+                            </div>
+                            <span class="timeline-role">데이터 마케팅 스페셜리스트</span>
+                        </div>
+                        <div class="timeline-body">
+                            <p>기존 유저의 이탈률 개선과 LTV 증대를 목표로, 행동 로그 데이터를 활용한 CRM 정밀 타겟팅 모델을 구축했습니다.</p>
+                            <ul>
+                                <li><strong>CRM 전환율 18% 상승:</strong> RFM 분석 기반 고객 세그멘테이션으로 개인 맞춤형 오퍼 및 시나리오 메일/앱 푸시 자동화.</li>
+                                <li><strong>유저 활성화:</strong> 장기 휴면 위험 유저 타겟 활성화를 통해 리텐션 지표 8% 상승.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2022 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-title-group">
+                                <span class="timeline-year">2022~</span>
+                                <h3 class="timeline-title">전사 A/B 테스트 및 실험 프레임워크 설계</h3>
+                            </div>
+                            <span class="timeline-role">A/B 테스팅 코디네이터</span>
+                        </div>
+                        <div class="timeline-body">
+                            <p>직관 중심의 크리에이티브 선정이 아닌, 가설과 대조군 검증에 기반한 데이터 중심 의사결정 체계를 전사에 이식했습니다.</p>
+                            <ul>
+                                <li><strong>A/B 테스트 30회 운영:</strong> 랜딩 페이지 레이아웃, 후기 배치, 결제 버튼 위치 등 세부 요소 검증.</li>
+                                <li><strong>평균 리프트 12% 달성:</strong> 통계적으로 유의미한 시안 채택 및 사이트 전반의 구매 전환율 개선 프로세스 구축.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="padding-bottom: 120px;">
+        <div class="container">
+            <div class="contact-card">
+                <span class="section-tag" style="color: var(--accent-success);">Get In Touch</span>
+                <h2>성장을 위한 데이터 협업을 기다립니다</h2>
+                <p>SQL 분석이 필요한 마케팅 캠페인 설계, 가설 검증형 광고 집행, 또는 <br>데이터와 비즈니스를 연결하는 퍼포먼스 마케팅에 대해 자유롭게 연락해 주세요.</p>
+                
+                <div class="email-display">
+                    <svg class="email-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    &nbsp;<span id="emailText">jihun@example.com</span>
+                </div>
+                <div>
+                    <button class="copy-btn" id="copyBtn" onclick="copyEmail()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        이메일 주소 복사
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Park Jihoon. All rights reserved. | 데이터 기반 퍼포먼스 마케터 박지훈</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Responsive Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Header Style change on Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Copy Email to Clipboard
+        function copyEmail() {
+            const emailText = document.getElementById('emailText').innerText;
+            navigator.clipboard.writeText(emailText).then(() => {
+                const btn = document.getElementById('copyBtn');
+                const originalHTML = btn.innerHTML;
+                
+                btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 복사 완료!`;
+                btn.classList.add('copied');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('클립보드 복사 실패: ', err);
+            });
+        }
+
+        // Count-up Numbers Animation
+        const metrics = document.querySelectorAll('.metric-number');
+        const speed = 150; // speed of counting (higher is slower)
+
+        const startCount = (targetElement) => {
+            const updateCount = () => {
+                const target = parseFloat(targetElement.getAttribute('data-target'));
+                const count = parseFloat(targetElement.innerText);
+                const increment = target / speed;
+
+                if (count < target) {
+                    if (target % 1 === 0) {
+                        targetElement.innerText = Math.min(target, Math.ceil(count + increment));
+                    } else {
+                        // For decimal values like 3.2
+                        targetElement.innerText = Math.min(target, (count + increment)).toFixed(1);
+                    }
+                    setTimeout(updateCount, 1);
+                } else {
+                    targetElement.innerText = target;
+                }
+            };
+            updateCount();
+        };
+
+        // Trigger animations when elements are scrolled into viewport
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startCount(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        metrics.forEach(metric => {
+            counterObserver.observe(metric);
+        });
+
+        // Chart.js Configuration
+        let activeChartType = 'roas';
+        let currentChart = null;
+
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+
+        // Gradient generator helper
+        function getGradient(ctx, color1, color2) {
+            const grad = ctx.createLinearGradient(0, 0, 0, 300);
+            grad.addColorStop(0, color1);
+            grad.addColorStop(1, color2);
+            return grad;
+        }
+
+        const chartConfigs = {
+            roas: {
+                type: 'line',
+                data: {
+                    labels: ['Q1', 'Q2', 'Q3', 'Q4 (개선 시작)', 'Q1 (2024)', 'Q2 (현재)'],
+                    datasets: [{
+                        label: '광고 캠페인 ROAS (배수)',
+                        data: [1.1, 1.2, 1.0, 1.8, 3.0, 3.2],
+                        borderColor: '#6366f1',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#10b981',
+                        pointBorderColor: '#ffffff',
+                        pointHoverRadius: 8,
+                        pointRadius: 6,
+                        tension: 0.35,
+                        fill: true,
+                        backgroundColor: getGradient(ctx, 'rgba(99, 102, 241, 0.35)', 'rgba(99, 102, 241, 0.0)')
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#94a3b8', font: { family: 'Inter' } },
+                            min: 0,
+                            max: 4.0
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#94a3b8', font: { family: 'Inter' } }
+                        }
+                    }
+                }
+            },
+            crm: {
+                type: 'bar',
+                data: {
+                    labels: ['기존 일괄 발송 (2022)', '세그멘테이션 타겟팅 (2023)', '개인화 시나리오 (현재)'],
+                    datasets: [{
+                        label: 'CRM 구매 전환율 (%)',
+                        data: [2.5, 4.8, 6.2],
+                        backgroundColor: [
+                            'rgba(255, 255, 255, 0.08)',
+                            'rgba(99, 102, 241, 0.6)',
+                            getGradient(ctx, 'rgba(16, 185, 129, 0.8)', 'rgba(20, 184, 166, 0.8)')
+                        ],
+                        borderColor: [
+                            'rgba(255, 255, 255, 0.2)',
+                            '#6366f1',
+                            '#10b981'
+                        ],
+                        borderWidth: 1.5,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#94a3b8', font: { family: 'Inter' } },
+                            min: 0,
+                            max: 8.0
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#94a3b8', font: { family: 'Inter' } }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Render Initial Chart
+        currentChart = new Chart(ctx, chartConfigs.roas);
+
+        window.switchChart = function(element, type) {
+            if (activeChartType === type) return;
+            
+            activeChartType = type;
+            
+            // Toggle active class on tab buttons
+            const buttons = document.querySelectorAll('.chart-tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+
+            // Destroy and re-create chart
+            currentChart.destroy();
+            currentChart = new Chart(ctx, chartConfigs[type]);
+        };
+    </script>
+</body>
+</html>
