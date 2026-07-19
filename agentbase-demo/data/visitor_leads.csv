@@ -1,3 +1,4 @@
-﻿접수일시,채널 링크,플랫폼,이메일,추천 발송 상태,템플릿 발송 상태
-2026-07-18 14:02,https://youtube.com/@cooking-jaeyoon-demo,쇼츠,demo1@example.com,발송 완료,발송 완료
-2026-07-18 15:41,https://instagram.com/beautylog-haeun-demo,릴스,demo2@example.com,발송 완료,대기
+﻿접수일시,채널 링크,플랫폼,이메일,개인정보 동의,발송 상태
+2026-07-18 14:02,https://youtube.com/@cooking-jaeyoon-demo,유튜브 쇼츠,demo1@example.com,동의,완료
+2026-07-18 15:41,https://instagram.com/beautylog-haeun-demo,릴스,demo2@example.com,동의,완료
+2026-07-19 10:15,https://youtube.com/@travel-sora-demo,유튜브 쇼츠,demo3@example.com,동의,대기
